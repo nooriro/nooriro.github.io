@@ -1,12 +1,68 @@
 @charset "utf-8";
 
+// 'Charter' font family by Matthew Carter
+
+@font-face {
+  font-family: Charter;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  src: local('Charter'), local('CharterRegular'), url('charter_regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Charter;
+  font-style: italic;
+  font-weight: normal;
+  font-stretch: normal;
+  src: local('Charter Italic'), local('CharterItalic'), url('charter_italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Charter;
+  font-style: normal;
+  font-weight: bold;
+  font-stretch: normal;
+  src: local('Charter Bold'), local('CharterBold'), url('charter_bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Charter;
+  font-style: italic;
+  font-weight: bold;
+  font-stretch: normal;
+  src: local('Charter Bold Italic'), local('CharterBoldItalic'), url('charter_bold_italic.woff2') format('woff2');
+}
+
+
+// 'Inconsolata', 'Noto Sans KR', 'Noto Serif KR' and 'Noto Color Emoji' from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+
+
 // Define defaults for each variable.
 
-$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$base-font-family: "Charter",
+                   "Source Han Serif K",  "Noto Serif CJK KR",  // OTF
+                   "Source Han Serif",    "Noto Serif CJK JP",  // OTF
+                   "Source Han Serif SC", "Noto Serif CJK SC",  // OTF
+                   "Source Han Serif TC", "Noto Serif CJK TC",  // OTF
+                   "Source Han Serif HC", "Noto Serif CJK HK",  // OTF
+                   "Source Han Serif KR", "Noto Serif KR",      // Subset OTF
+                   serif, "Noto Color Emoji" !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
-$base-line-height: 1.5 !default;
+$base-line-height: 1.625 !default;
+
+$code-font-family: "Inconsolata",
+                   "Source Han Sans K",  "Noto Sans CJK KR",  // OTF
+                   "Source Han Sans",    "Noto Sans CJK JP",  // OTF
+                   "Source Han Sans SC", "Noto Sans CJK SC",  // OTF
+                   "Source Han Sans TC", "Noto Sans CJK TC",  // OTF
+                   "Source Han Sans HC", "Noto Sans CJK HK",  // OTF
+                   "Source Han Sans KR", "Noto Sans KR",      // Subset OTF
+                   monospace, "Noto Color Emoji" !default;
+$code-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
 

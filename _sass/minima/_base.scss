@@ -133,8 +133,8 @@ blockquote {
   border-left: 4px solid $grey-color-light;
   padding-left: $spacing-unit / 2;
   @include relative-font-size(1.125);
-  letter-spacing: -1px;
-  font-style: italic;
+  /* letter-spacing: -1px; */
+  /* font-style: italic; */
 
   > :last-child {
     margin-bottom: 0;
@@ -148,7 +148,8 @@ blockquote {
  */
 pre,
 code {
-  @include relative-font-size(0.9375);
+  font-family: $code-font-family;
+  /* @include relative-font-size(0.9375); */
   border: 1px solid $grey-color-light;
   border-radius: 3px;
   background-color: #eef;
@@ -159,6 +160,7 @@ code {
 }
 
 pre {
+  line-height: $code-line-height;
   padding: 8px 12px;
   overflow-x: auto;
 
