@@ -7,7 +7,7 @@
   font-style: normal;
   font-weight: normal;
   font-stretch: normal;
-  src: local('Charter'), local('CharterRegular'), url('charter_regular.woff2') format('woff2');
+  src: local('Charter'), local('CharterRegular'), url('otf/Charter-Regular-fixed.otf') format('opentype');
 }
 
 @font-face {
@@ -15,7 +15,7 @@
   font-style: italic;
   font-weight: normal;
   font-stretch: normal;
-  src: local('Charter Italic'), local('CharterItalic'), url('charter_italic.woff2') format('woff2');
+  src: local('Charter Italic'), local('CharterItalic'), url('otf/Charter-Italic-fixed.otf') format('opentype');
 }
 
 @font-face {
@@ -23,7 +23,7 @@
   font-style: normal;
   font-weight: bold;
   font-stretch: normal;
-  src: local('Charter Bold'), local('CharterBold'), url('charter_bold.woff2') format('woff2');
+  src: local('Charter Bold'), local('CharterBold'), url('otf/Charter-Bold-fixed.otf') format('opentype');
 }
 
 @font-face {
@@ -31,7 +31,7 @@
   font-style: italic;
   font-weight: bold;
   font-stretch: normal;
-  src: local('Charter Bold Italic'), local('CharterBoldItalic'), url('charter_bold_italic.woff2') format('woff2');
+  src: local('Charter Bold Italic'), local('CharterBoldItalic'), url('otf/Charter-Bold-Italic-fixed.otf') format('opentype');
 }
 
 
