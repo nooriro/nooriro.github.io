@@ -53,3 +53,7 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+# Global permalink setting
+# See https://jekyllrb.com/docs/permalinks/
+permalink: /:short_year:month:day/:title
+
