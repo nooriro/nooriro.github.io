@@ -21,7 +21,7 @@
 title: nooriro’s stdout
 email: stdout@nooriro.kr
 description: >- # this means to ignore newlines until "baseurl:"
-  주로 C, Java, shell 그리고 Android와 관련하여 알게 된 것들을 종종 여기에
+  C, Java, shell 그리고 Android 등과 관련하여 알게 된 것들을 종종 여기에
   기록해 둘 생각입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -56,4 +56,3 @@ plugins:
 # Global permalink setting
 # See https://jekyllrb.com/docs/permalinks/
 permalink: /:short_year:month:day/:title
-
