@@ -7,7 +7,9 @@
   font-style: normal;
   font-weight: normal;
   font-stretch: normal;
-  src: local('Charter'), local('CharterRegular'), url('otf/Charter-Regular-fixed.otf') format('opentype');
+  src: local('Charter'),
+       local('CharterRegular'),
+       url('charter/otf/Charter-Regular-fixed.otf') format('opentype');
 }
 
 @font-face {
@@ -15,7 +17,9 @@
   font-style: italic;
   font-weight: normal;
   font-stretch: normal;
-  src: local('Charter Italic'), local('CharterItalic'), url('otf/Charter-Italic-fixed.otf') format('opentype');
+  src: local('Charter Italic'),
+       local('CharterItalic'),
+       url('charter/otf/Charter-Italic-fixed.otf') format('opentype');
 }
 
 @font-face {
@@ -23,7 +27,9 @@
   font-style: normal;
   font-weight: bold;
   font-stretch: normal;
-  src: local('Charter Bold'), local('CharterBold'), url('otf/Charter-Bold-fixed.otf') format('opentype');
+  src: local('Charter Bold'),
+       local('CharterBold'),
+       url('charter/otf/Charter-Bold-fixed.otf') format('opentype');
 }
 
 @font-face {
@@ -31,7 +37,9 @@
   font-style: italic;
   font-weight: bold;
   font-stretch: normal;
-  src: local('Charter Bold Italic'), local('CharterBoldItalic'), url('otf/Charter-Bold-Italic-fixed.otf') format('opentype');
+  src: local('Charter Bold Italic'),
+       local('CharterBoldItalic'),
+       url('charter/otf/Charter-Bold-Italic-fixed.otf') format('opentype');
 }
 
 
