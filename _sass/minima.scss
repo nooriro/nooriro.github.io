@@ -56,7 +56,7 @@ $base-font-family: "Charter",
                    "Source Han Serif TC", "Noto Serif CJK TC",  // OTF
                    "Source Han Serif HC", "Noto Serif CJK HK",  // OTF
                    "Source Han Serif KR", "Noto Serif KR",      // Subset OTF
-                   serif, "Noto Color Emoji" !default;
+                   serif, "Apple Color Emoji", "Noto Color Emoji" !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
@@ -69,7 +69,7 @@ $code-font-family: "Inconsolata",
                    "Source Han Sans TC", "Noto Sans CJK TC",  // OTF
                    "Source Han Sans HC", "Noto Sans CJK HK",  // OTF
                    "Source Han Sans KR", "Noto Sans KR",      // Subset OTF
-                   monospace, "Noto Color Emoji" !default;
+                   monospace, "Apple Color Emoji", "Noto Color Emoji" !default;
 $code-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
