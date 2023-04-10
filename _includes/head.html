@@ -18,8 +18,13 @@
   <script>
     // See [1] https://docs.mathjax.org/en/latest/web/configuration.html#configuration
     //     [2] https://github.com/mathjax/MathJax/issues/2521
+    //     [3] 1. https://docs.mathjax.org/en/latest/input/tex/extensions/ams.html
+    //         2. https://docs.mathjax.org/en/latest/input/tex/extensions/mathtools.html
     MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      loader:  { load: ['[tex]/ams', '[tex]/mathtools'] },
+      tex:     { packages:   { '[+]': ['ams', 'mathtools'] },
+                 inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
       options: { renderActions: { assistiveMml: [] } }
     };
   </script>
