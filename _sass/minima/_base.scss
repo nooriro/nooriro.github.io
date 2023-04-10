@@ -172,6 +172,13 @@ pre {
 }
 
 
+/**
+ * Superscripts & subscripts
+ */
+sup, sub {
+  line-height: normal;  /* Remove additional linegap above/below the line */
+}
+
 
 /**
  * Wrapper
