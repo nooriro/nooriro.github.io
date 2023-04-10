@@ -3,6 +3,7 @@ layout: post
 title:  "LaTeX Test"
 date:   2023-04-01 19:03:25 +0900
 categories: jekyll update
+published: false
 ---
 $\sum_{i=1}^{n}f(x_i)$ You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the $(a+b)^2 = a^2 + 2ab + b^2$ 이고 $(a-b)^2 = a^2 - 2ab + b^2$ 이므로 $a^2 + b^2 = (a+b)^2 - 2ab = (a-b)^2 + 2ab$ 인데 아래와 같이 인라인 수식이 길어져도 $\lim_{x\to\infty}a_n = L \require{mathtools} \enspace \xLeftrightarrow[]{\text{definition}} \enspace \forall \epsilon \gt 0 \enspace \exists N \in \mathbb{N} \enspace \text{such that} \enspace n \gt N \implies \left\lvert a_n - L \right\rvert \lt \epsilon$ 이렇게 수식 밑에 스크롤바가 생기며 레이아웃이 깨지지 않는다 site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
