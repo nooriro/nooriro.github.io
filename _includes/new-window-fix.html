@@ -1,0 +1,15 @@
+<script>
+// Open external links in a new window
+// See https://jekyllcodex.org/without-plugin/new-window-fix/
+function external_new_window() {
+    var anchors = document.getElementsByTagName("a");
+    for (var i = 0; i < anchors.length; i++) {
+        var a = anchors[i];
+        if (a.getAttribute("href") && a.hostname !== location.hostname) {
+            a.target = "_blank";
+            a.rel = "noopener";
+        }
+    }
+}
+external_new_window();
+</script>
