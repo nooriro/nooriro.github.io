@@ -274,6 +274,34 @@ table {
 
 
 /**
+ * Footnotes
+ * See https://stackoverflow.com/questions/22530982/html-numbering-with-brackets
+ */
+.footnote:before {
+  content: '[';
+}
+.footnote:after {
+  content: ']';
+}
+.footnotes > ol {
+  counter-reset: list;
+  margin-left: 0;
+}
+.footnotes > ol > li {
+  list-style: none;
+  position: relative;
+}
+.footnotes > ol > li:before {
+  content: "[" counter(list) "]";
+  counter-increment: list;
+  float: left;
+  margin-right: 8px;
+}
+.footnotes > ol > li > p {
+  margin-left: 30px;
+}
+
+/**
  * Add overflow-x to MathJax 3
  * See https://stackoverflow.com/questions/65321568/mathjax-3-inline-math-and-overflow-x/65381823#65381823
  */
