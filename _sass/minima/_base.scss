@@ -123,6 +123,8 @@ a {
   &:hover {
     color: $text-color;
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-position: under;
   }
 
   .social-media-list &:hover {
@@ -130,6 +132,8 @@ a {
 
     .username {
       text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-position: under;
     }
   }
 }
