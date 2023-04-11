@@ -206,6 +206,7 @@
 .post-link {
   display: block;
   @include relative-font-size(1.5);
+  letter-spacing: -0.624px;    /* (26/1000) of 24px */
 }
 
 
@@ -219,7 +220,7 @@
 
 .post-title {
   @include relative-font-size(2.625);
-  /* letter-spacing: -1px; */
+  letter-spacing: -1.092px;    /* (26/1000) of 42px */
   line-height: 1;
 
   @include media-query($on-laptop) {
