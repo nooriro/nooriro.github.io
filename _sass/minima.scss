@@ -43,9 +43,8 @@
 }
 
 
-// 'Inconsolata', 'Noto Sans KR', 'Noto Serif KR' and 'Noto Color Emoji' from Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&display=swap');
-
+// 'Roboto', 'Inconsolata', 'Noto Sans KR', 'Noto Serif KR' and 'Noto Color Emoji' from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 // Define defaults for each variable.
 
@@ -71,6 +70,15 @@ $code-font-family: "Inconsolata",
                    "Source Han Sans KR", "Noto Sans KR",      // Subset OTF
                    monospace, "Apple Color Emoji", "Noto Color Emoji" !default;
 $code-line-height: 1.5 !default;
+
+$heading-font-family: "Roboto",
+                   "Source Han Sans K",  "Noto Sans CJK KR",  // OTF
+                   "Source Han Sans",    "Noto Sans CJK JP",  // OTF
+                   "Source Han Sans SC", "Noto Sans CJK SC",  // OTF
+                   "Source Han Sans TC", "Noto Sans CJK TC",  // OTF
+                   "Source Han Sans HC", "Noto Sans CJK HK",  // OTF
+                   "Source Han Sans KR", "Noto Sans KR",      // Subset OTF
+                   sans-serif, "Apple Color Emoji", "Noto Color Emoji" !default;
 
 $spacing-unit:     30px !default;
 

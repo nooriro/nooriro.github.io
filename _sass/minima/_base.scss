@@ -98,6 +98,15 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
 }
 
+div.post-content > h1,
+div.post-content > h2,
+div.post-content > h3,
+div.post-content > h4,
+div.post-content > h5,
+div.post-content > h6 {
+  font-family: $heading-font-family;
+}
+
 
 
 /**
