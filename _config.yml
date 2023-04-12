@@ -56,3 +56,8 @@ plugins:
 # Global permalink setting
 # See https://jekyllrb.com/docs/permalinks/
 permalink: /:short_year:month:day/:title
+
+# Time zone setting
+# See https://jekyllrb.com/docs/configuration/options/
+# and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Seoul
