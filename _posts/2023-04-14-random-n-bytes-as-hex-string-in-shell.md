@@ -3,63 +3,64 @@ layout: post
 title:  "셸에서 랜덤한 N바이트를 16진수로 출력하기"
 date:   2023-04-14 08:55:00 +0900
 ---
-랜덤(random)한 16바이트의 데이터를 얻어와서 그걸 16진수 문자열(hex string)로 출력하려면 어떻게 해야 할까?\
-셸에서 아래 한 줄만 실행하면 된다. ([출처](https://stackoverflow.com/questions/6292645/convert-binary-data-to-hexadecimal-in-a-shell-script/6292701#6292701))
+랜덤(random)한 20바이트의 데이터를 얻어와서 그걸 십육진수 문자열(hex string)로 출력하려면 어떻게 해야 할까? 셸에서 아래 한 줄만 실행하면 된다. ([출처](https://stackoverflow.com/questions/6292645/convert-binary-data-to-hexadecimal-in-a-shell-script/6292701#6292701))
 
 ```
-xxd -l 16 -p /dev/urandom
+xxd -l 20 -p /dev/urandom
 ```
 
 실행 결과는 다음과 같다. 출력되는 값은 실행할 때마다 달라진다.
 
 ```console
-$ xxd -l 16 -p /dev/urandom
-17a7ee562c28b6ccc8dac7285e42f414
+$ xxd -l 20 -p /dev/urandom
+e76f9c0cef52a6603595572df880914d17374eaf
 ```
+**1바이트**는 **십육진수 두 자리**로 표현된다. 따라서 20바이트의 데이터는 위와 같이 십육진수 40자리로 표현된다.
 
-나는 처음에 `dd` 명령으로 `/dev/urandom`에서 16바이트를 가져와서 파이프(`|`)로 `xxd`에 넘기는 걸 생각했는데, 검색해 보니 `xxd` 명령으로 바로 읽을 파일명과 읽을 바이트 수를 지정할 수 있었다.\
+나는 처음에 `dd` 명령으로 `/dev/urandom`에서 20바이트를 가져와서 파이프(`|`)로 `xxd`에 넘기는 걸 생각했는데, 검색해 보니 `xxd` 명령으로 바로 읽을 파일명과 읽을 바이트 수를 지정할 수 있었다.\
 읽을 바이트 수는 length를 뜻하는 `-l` 옵션으로 지정하고, 읽을 파일명은 옵션 없이 지정한다.
 
 참고로 위 명령에서 `-p` 옵션은 읽을 파일명을 지정하는 옵션이 아니다. `-p`는 그 뒤에 뭐가 붙지 않고 그냥 단독으로 쓰이는 옵션인데, plain hexdump style([여기](https://www.tutorialspoint.com/unix_commands/xxd.htm)의 설명을 보면, 다소 생소한 호명이기는 하지만, postscript hexdump style이라고도 부르는 모양이다)로 출력하라는 뜻이다. \
 만일 위 명령에서 `-p` 옵션을 생략하면 아래와 같이 헥사 에디터(hexa editor) 스타일로 출력된다.
 
 ```console
-$ xxd -l 16 /dev/urandom
-00000000: ad4b 8406 e333 ca25 8d6d ce7e 767d 17aa  .K...3.%.m.~v}..
+$ xxd -l 20 /dev/urandom
+00000000: b201 fb12 0a2d a356 bce1 7ef0 c9ce 30ef  .....-.V..~...0.
+00000010: cd7d 3d4c                                .}=L
 ```
 
-그렇다면 16바이트의 랜덤값 10개를 출력하려면 어떻게 해야 할까?\
+그렇다면 20바이트의 랜덤값 **10개**를 출력하려면 어떻게 해야 할까?
+
 일단, 위 `xxd` 명령을 10번 반복해서 실행하면 된다. 반복 실행 방법에도 여러 가지가 있지만, 가령 이런 식으로 하면 된다.
 
 ```console
-$ seq 10 | while read line; do xxd -l 16 -p /dev/urandom; done
-71ef2f412868e1cf393aad549806ab93
-7cb3f475e968e1965edc5326fc55bd38
-a7bd294519ad75567bde1f8ff374cacb
-7fea8a1a7d8a876e1970d7ac4b709533
-ce26a4a60a66a2da046d6c8df60fc54f
-392d09339d13473a987bdd3e7f1f78b4
-39235d5dab7fb705bc0e59fef30ccaa1
-d812704584b66514ad5d7ad913ca7cd0
-7258f588261e19ab6a8a816ef7703ecd
-29864485b2dd0f966e9090dc49c4799b
+$ seq 10 | while read line; do xxd -l 20 -p /dev/urandom; done
+bb7af05156bd9fa66651f6dc1e7d584361fdb8ee
+989fcab7113439f1f5745f30920ba72ca4624797
+f5afbe62a8bc45e7e1125fd044f14bb13ef1d2d2
+4ea3d76db27be33daa3d9e3a6b7ecc471d3eebe8
+af55ac1355a6c7a69bbb31418067347ec08ec7e4
+417ef6539984b392e3891cb6df8b7652d70ab593
+3e6fd4b64dcace4d09baff9d12060994e4211bb2
+23f9fbd69f1b73bc34efb8e57435e24c68fe89cf
+7cef905d6e372af8001a7ec36a87ba618b589fd9
+d12db712c0170f1d7cf1c6b37e7e127740a6763d
 ```
 
-하지만 이렇게 하면 `xxd` 명령이 개수만큼 반복해서 실행되기 때문에 비효율적이다. 한번에 160바이트를 통째로 읽어서 이를 16바이트씩 잘라서 출력하는 것이 효과적이다.\
-다행히 `xxd`에는 이를 위한 옵션이 있는데 바로 `-c` 옵션이다. `-c 16`을 지정하면 16바이트마다 줄바꿈되어 출력된다.
+하지만 이렇게 하면 `xxd` 명령이 개수만큼 반복해서 실행되기 때문에 비효율적이다. 한번에 200바이트를 통째로 읽어서 이를 20바이트씩 잘라서 출력하는 것이 효과적이다. 다행히 `xxd`에는 이를 위한 옵션이 있는데 바로 `-c` 옵션이다. `-c 20`을 지정하면 20바이트마다 줄바꿈되어 출력된다.
 
 ```console
-$ xxd -l 160 -c 16 -p /dev/urandom
-0b67909e639e65ba85c66815064537a4
-6200606b04bb09ae6fbd3931df9d97d2
-51d61a5cec6380ef71bb21ee2a3ade8d
-e4c81c8d43ca8a85d697da7b9b92d786
-39a89dd35e2bdd4df6893a0571ea0d50
-663aae9b9789fa5caac0d7d1261f8b2a
-a58c2b0e2fcb448dd1509df2c12d9df5
-8672f78168e329598c0c5d195046ea7f
-67eadf0e6a1c630f67730ef491b6c96b
-05836e507b757c463598791ec6afb752
+$ xxd -l 200 -c 20 -p /dev/urandom
+55c6c1a6303d1ce46166bc16222ec3e1d6e4c47a
+528d9dd988709dd221248ff1035440a8321145cb
+801a23e962df779e94ec1fd6fa740326cc3d733b
+4e9a2858b0f240a872cdc253969753cda2416c28
+393ed095c5a5fb4164dfb17398582b541a4a0748
+8e02aacd1b4ec80e89222f4d1eb8b6063782f485
+89f600bd275082a71a8f95ca62e25894d01c3a74
+2477fd3b47858e9d7f9eaf665d332cc6f5d1ddc9
+669bb87c3a022c26f4bc78cf7d1b4b4abf6530d6
+02e473641469b1ad415edc3946311b9336d7d087
 ```
 
 `-c` 옵션에 대해 발견한 한 가지 사실이 있다.  내 노트북의 리눅스 환경(Ubuntu 20.04 LTS on WSL1)에서 `man xxd` 명령을 실행하여 `xxd`의 man page를 보면, `-c` 옵션으로 지정할 수 있는 칼럼 수의 최대치가 256이라고 나와 있다.
@@ -110,13 +111,14 @@ Options:
     -v          show version: "xxd V1.10 27oct98 by Juergen Weigert".
 ```
 
-한편, 만약에 `xxd` 명령의 `-c` 옵션의 최대치가 실제로 `256`으로 제한된다면 어떻게 해야 할까?\
+한편, 만약에 `xxd` 명령의 `-c` 옵션의 최대치가 실제로 256으로 제한된다면 어떻게 해야 할까?\
 이 질문을 일반화하면\
-일반적인 바이트 배열을 n바이트마다 줄바꿈(개행 문자 `\n` 삽입)하려면 어떻게 해야 하는가?\
+‘일반적인 바이트 배열을 n바이트마다 줄바꿈(개행 문자 `\n` 삽입)해서 출력하려면 어떻게 해야 하는가?’\
 라는 질문이 된다.\
 구글에서 [add newline at n bytes in shell](https://www.google.com/search?q=add+newline+at+n+bytes+in+shell&newwindow=1)로 검색해 보면 명령행에서 이 질문에 대한 (완전한 혹은 부분적인) 여러 가지 해법을 찾을 수 있는데, 거기까지 논하기엔 글이 너무 길어지므로 다음 기회로 미루는 게 좋을 것 같다.
 
-여기서는 `/dev/urandom`과 관련하여 한 가지만 덧붙이고 끝내겠다.\
+여기서는 `/dev/urandom`과 관련하여 한 가지만 덧붙이고 끝내겠다.
+
 `/dev/urandom`은 랜덤 바이트를 공급하는 특수 파일이다. 그런데, 이 `/dev/urandom` 파일 역시 `/dev/zero`와 마찬가지로 데이터를 끝없이 공급하기 때문에, 파일 전체를 다 읽거나 파일의 끝을 찾으려고 하면 안 된다. 반드시 읽을 바이트 수를 한정할 수 있는 명령(이를테면 `dd`, `head`, 그리고 방금 소개한 `xxd` 명령 등)을 사용해서 다뤄야 한다.\
 `tail`명령으로 `/dev/urandom` 끝의 N바이트를 가져오려고 하면 실행이 끝나지 않고 무한정 계속 실행된다.\
 `cp` 명령으로 `/dev/urandom`의 전체 내용을 복사하려고 하면 디스크의 남은 공간을 다 채우기 전까지 계속 실행된다.
