@@ -63,7 +63,8 @@ $ xxd -l 200 -c 20 -p /dev/urandom
 02e473641469b1ad415edc3946311b9336d7d087
 ```
 
-`-c` 옵션에 대해 발견한 한 가지 사실이 있다.  내 노트북의 리눅스 환경(Ubuntu 20.04 LTS on WSL1)에서 `man xxd` 명령을 실행하여 `xxd`의 man page를 보면, `-c` 옵션으로 지정할 수 있는 칼럼 수의 최대치가 256이라고 나와 있다.
+`-c` 옵션에 대해 발견한 한 가지 사실이 있다.\
+내 노트북의 리눅스 환경(Ubuntu 20.04 LTS on WSL1)에서 `man xxd` 명령을 실행하여 `xxd`의 man page를 보면, `-c` 옵션으로 지정할 수 있는 칼럼 수의 최대치가 256이라고 나와 있다.
 
 ```console
        -c cols | -cols cols
