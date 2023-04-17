@@ -293,16 +293,17 @@ table {
 }
 .footnotes > ol > li {
   list-style: none;
-  position: relative;
-}
-.footnotes > ol > li:before {
-  content: "[" counter(list) "]";
-  counter-increment: list;
-  float: left;
-  margin-right: 8px;
 }
 .footnotes > ol > li > p {
   margin-left: 30px;
+}
+.footnotes > ol > li > p:first-child {
+  text-indent: -30px;
+}
+.footnotes > ol > li > p:first-child:before {
+  content: "[" counter(list) "]";
+  counter-increment: list;
+  margin-right: 8px;
 }
 /* :target pseudo class */
 /* See https://developer.mozilla.org/en-US/docs/Web/CSS/:target */
