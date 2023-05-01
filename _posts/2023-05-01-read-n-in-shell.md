@@ -318,25 +318,25 @@ $
 위 while 루프가 완벽한 것은 아니다. 위 명령에서의 while loop는 십육진수 문자들로만 이루어진 문자열에 대해서는 잘 작동하지만, 일반적인 문자열에 대해서는 정상 작동이 보장되지 않는다. 일반적인 문자열에 대해서도 잘 작동하는 코드는 다음과 같다.
 
 * **널 문자와 개행 문자를 포함하지 않는** 일반적인 문자열 데이터를 40글자마다 줄바꿈하여 출력하려면, 다음과 같이 하면 된다. (앞에서와 마찬가지로, 여기서 `w_newline`은 끝에 개행문자가 붙어있는 파일이며, `wo_newline`은 끝에 개행문자가 붙어있지 않은 파일이다. 개행문자는 입력값에 포함되지 않는 것으로 한다.)
-    ```
-    cat w_newline | while IFS= read -r -n 40 line && [ -n "$line" ]; do printf "%s\n" "$line"; done
-    또는
-    cat wo_newline | while IFS= read -r -n 40 line || [ -n "$line" ]; do printf "%s\n" "$line"; done
-    ```
+  ```
+  cat w_newline | while IFS= read -r -n 40 line && [ -n "$line" ]; do printf "%s\n" "$line"; done
+  또는
+  cat wo_newline | while IFS= read -r -n 40 line || [ -n "$line" ]; do printf "%s\n" "$line"; done
+  ```
 
 * **널 문자를 포함하지 않는** 일반적인 문자열 데이터를 40글자마다 줄바꿈하여 출력하려면, 다음과 같이 하면 된다. (여기서 `file`은 입력 데이터를 담고 있는 파일이다. 그리고 여기서는 파일에 포함된 개행 문자를 행 구분 문자로 취급하지 않고 다른 문자와 동일하게 취급한다. 즉, 개행문자 역시 입력값에 포함되는 것으로 한다.)
-    ```
-    cat file | while IFS= read -r -d "" -n 40 line || [ -n "$line" ]; do printf "%s\n" "$line"; done
-    ```
+  ```
+  cat file | while IFS= read -r -d "" -n 40 line || [ -n "$line" ]; do printf "%s\n" "$line"; done
+  ```
 
-이들 코드를 앞선 코드와 비교해 보면 `IFS=`, `-r` 옵션, `-d` 옵션이 추가되었고 출력문이 `printf "%s\n" "%line"`으로 변경된 것이 눈에 띈다. 여기에 대해서도 설명이 필요하지만, 글이 너무 길어져서 아래 스택오버플로우 링크로 대신하고자 한다. 아래 링크의 첫 번째 답변에 설명이 잘 되어 있다.
+이들 코드를 앞선 코드와 비교해 보면 `IFS=`, `-r` 옵션, `-d` 옵션이 추가되었고 출력문이 `printf "%s\n" "%line"`으로 변경된 것이 눈에 띈다. 여기에 대해서도 설명이 필요하지만, 글이 너무 길어져서 아래 스택오버플로우 링크로 대신하고자 한다. 아래 링크의 첫 번째 답변에 설명이 매우 잘 되어 있다.
 
 - [What does IFS= do in this bash loop: `cat file | while IFS= read -r line; do ... done`](https://stackoverflow.com/questions/26479562/what-does-ifs-do-in-this-bash-loop-cat-file-while-ifs-read-r-line-do) (Stack Overflow)
 
 그리고 만일, 입력 데이터에 널 문자가 포함되어 있다면, 이 방법으로는 불가능하다. 왜냐하면, [적어도 bash에서는, 셸 변수가 널 문자를 수용할 수 없기 때문이다.](https://stackoverflow.com/questions/6570531/assign-string-containing-null-character-0-to-a-variable-in-bash) bash의 셸 변수는 null-terminated string으로 구현되었기 때문에 파일의 내용을 셸 변수로 받아서 출력하면 널 문자 이후가 출력에서 누락된다.\
 입력 데이터를 16진수 문자로 변환한 다음 이를 셸 변수로 받아서 다시 바이트로 변환한 값을 출력하는 식으로 우회할 수는 있지만, 루프 안에서 이 작업을 작은 단위로 반복하는 것은 매우 비효율적이다. 이 경우에는 루프와 셸 변수를 이용하지 않는 다른 방법을 써야 한다.  
 
-그리고 중요한 것. `read` 명령의 `-n` 옵션은 모든 환경에서 지원되는 것이 아니다. 이를테면 아래 링크에 나온 대로, FresBSD에서는 `read -n`이 지원되지 않는다고 한다.
+그리고 중요한 것. `read` 명령의 `-n` 옵션은 모든 환경에서 지원되는 것이 아니다. 아래 글을 보면, FresBSD를 비롯한 상당수의 환경에서는 `read -n`이 지원되지 않는다고 한다.
 - [What is the FreeBSD equivalent of "read -n"?](https://unix.stackexchange.com/questions/366030/what-is-the-freebsd-equivalent-of-read-n) (Unix Stack Exchange)
 
 이런 경우 역시 다른 방법을 이용해야 할 것이다. 다른 방법들도 정리해보고 싶지만, 글이 길어져서 다음에 해야 할 것 같다.
