@@ -98,15 +98,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
 }
 
-div.post-content > h1,
-div.post-content > h2,
-div.post-content > h3,
-div.post-content > h4,
-div.post-content > h5,
-div.post-content > h6 {
-  font-family: $heading-font-family;
-}
-
 
 
 /**
@@ -166,7 +157,7 @@ code {
   /* @include relative-font-size(0.9375); */
   border: 1px solid $grey-color-light;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: #eee;
 }
 
 code {
