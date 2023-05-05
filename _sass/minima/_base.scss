@@ -172,6 +172,7 @@ pre {
   // border: 1px solid $grey-color-light;
   // border-radius: 3px;
   white-space: pre;
+  word-wrap: normal;   /* Fix Safari 14 bug */
 
   > code {
     border: 0;
