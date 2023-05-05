@@ -155,24 +155,30 @@ pre,
 code {
   font-family: $code-font-family;
   /* @include relative-font-size(0.9375); */
-  border: 1px solid $grey-color-light;
-  border-radius: 3px;
-  background-color: #eee;
 }
 
 code {
-  padding: 1px 5px;
+  background-color: #e8e8e8;
+  padding: 0.0625em 0.25em;      /* 1px 4px   for 16px font-size */
+  border: 1px solid #c6c6c6;
+  border-radius: 0.25em;         /* 4px       for 16px font-size */
+  white-space: break-spaces;
 }
 
 pre {
   line-height: $code-line-height;
   padding: 8px 12px;
   overflow-x: auto;
+  // border: 1px solid $grey-color-light;
+  // border-radius: 3px;
+  white-space: pre;
 
   > code {
     border: 0;
     padding-right: 0;
     padding-left: 0;
+    background-color: transparent;
+    white-space: pre;
   }
 }
 
