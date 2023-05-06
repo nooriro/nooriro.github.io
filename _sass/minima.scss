@@ -10,6 +10,7 @@
   src: local('Charter'),
        local('CharterRegular'),
        url('charter/otf/Charter-Regular-fixed.otf') format('opentype');
+  unicode-range: U+0000-2017, U+201A-201B, U+201E-FFFF;
 }
 
 @font-face {
@@ -20,6 +21,7 @@
   src: local('Charter Italic'),
        local('CharterItalic'),
        url('charter/otf/Charter-Italic-fixed.otf') format('opentype');
+  unicode-range: U+0000-2017, U+201A-201B, U+201E-FFFF;
 }
 
 @font-face {
@@ -30,6 +32,7 @@
   src: local('Charter Bold'),
        local('CharterBold'),
        url('charter/otf/Charter-Bold-fixed.otf') format('opentype');
+  unicode-range: U+0000-2017, U+201A-201B, U+201E-FFFF;
 }
 
 @font-face {
@@ -40,6 +43,7 @@
   src: local('Charter Bold Italic'),
        local('CharterBoldItalic'),
        url('charter/otf/Charter-Bold-Italic-fixed.otf') format('opentype');
+  unicode-range: U+0000-2017, U+201A-201B, U+201E-FFFF;
 }
 
 
