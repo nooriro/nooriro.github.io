@@ -89,3 +89,41 @@ $
 또한 `toybox sed`의 도움말을 확인해 보았지만, 이 문제를 해결할 수 있는 방법에 대한 단서를 찾지는 못했다.
 
 `toybox sed`가 아예 멀티바이트 문자를 다루지 못하는 것인지, 아니면 `toybox sed`가 멀티바이트 문자를 다룰 수는 있지만 안드로이드 셸에 그 기능을 활성화하는 설정이 되어 있지 않아서 이렇게 작동하는 것인지는 아직 모르겠다. 좀 더 조사를 해 봐야겠다.
+
+<br>
+
+**UPDATE (2023.05.16 21:50)**
+
+아래 명령으로 `toybox`를 Ubuntu on WSL1에서 직접 빌드해서 명령을 실행해 봤는데, 제대로 실행된다.\
+도대체 뭐가 문젤까?
+```shell
+git clone https://github.com/landley/toybox.git
+cd toybox
+make defconfig
+make
+```
+```console
+$ ./toybox --version
+toybox 0.8.9-118-g216e4d139826
+$ echo $'aα\uAC00\xF0\x9F\x98\x80' | ./toybox sed 's/./&|/g' | tee /dev/stderr | xxd -g 1
+a|α|가|😀|
+00000000: 61 7c ce b1 7c ea b0 80 7c f0 9f 98 80 7c 0a     a|..|...|....|.
+$
+```
+
+버전을 `0.8.0` (안드로이드 10에 들어있는 `toybox`와 같은 버전)으로 맞춰서 빌드했을 때도 제대로 실행된다. 혼란스럽다.
+```shell
+git clone https://github.com/landley/toybox.git
+cd toybox
+git checkout 0.8.0
+make defconfig
+make
+```
+```console
+$ ./toybox --version
+toybox 0.8.0
+$ echo $'aα\uAC00\xF0\x9F\x98\x80' | ./toybox sed 's/./&|/g' | tee /dev/stderr | xxd -g 1
+a|α|가|😀|
+00000000: 61 7c ce b1 7c ea b0 80 7c f0 9f 98 80 7c 0a     a|..|...|....|.
+$
+```
