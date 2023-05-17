@@ -163,3 +163,13 @@ $ exit
 - 혹시 안드로이드 최신 버전에서도 이 문제가 발생할까? (사정상 지금 확인해보기 어렵다.)
 
 어쨌든, `toybox sed` 그 자체는 UTF-8 문자를 지원한다는 것이 확인되었기 때문에 글의 제목을 “안드로이드의 sed는 UTF-8 문자를 지원하지 않는다”로 수정했다.
+
+<br>
+
+**UPDATE (2023.05.17 12:50)**
+
+도저히 방법이 떠오르지 않고 가능한지 불가능한지조차 확실하지 않아서 결국 [GitHub의 toybox repo](https://github.com/landley/toybox)에 Issue로 질문글을 올렸다.
+
+- [UTF-8 character support in Android's `sed`](https://github.com/landley/toybox/issues/430)
+
+소스를 빌드하여 실행해본 결과 및 프리빌트 바이너리를 다운로드하여 실행해본 결과까지 언급하면 질문글이 너무 길어져서 일단 그 얘기들은 전부 생략했다. 
